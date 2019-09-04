@@ -1,0 +1,28 @@
+<h2>Create Your plan</h2>
+
+<form action="/plans/create" method = "POST">
+    <label for='title'>Name you plan</label>
+    <input type="text" name ='title'>
+    <label for="length">Amount of Days</label>
+    <input type="text" name = "length">
+    <label for="people">people</label>
+    <input type="text" name= "people">
+    <button type="submit">Submit</button>
+</form>
+
+
+
+  {{!-- title : String,
+  length: Number,
+  people: Number,
+  allergents: String,
+  preferredFood: String,
+  _menuObjects: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Meals"
+    }
+  ],
+author: {
+  type: Schema.Types.ObjectId,
+  ref: "User" --}}
