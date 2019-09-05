@@ -1,0 +1,9 @@
+<h1>Edit {{theMeal.title}}</h1>
+
+<form action="/meals/{{theMeal._id}}/update" method="POST">
+  <label for='title'>Name you meal</label>
+  <input type="text" name ='title'>
+  <label for="ingridients">List of ingidients</label>
+  <input type="text" name ="ingridients">
+  <button type="submit">Submit</button>
+</form>

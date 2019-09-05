@@ -3,13 +3,8 @@ const Schema   = mongoose.Schema;
 
 const mealSchema = new Schema({
   title : String,
-  _furnitureObjects: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Components"
-    }
-  ],
-author: {
+  ingridients: String,
+  author: {
   type: Schema.Types.ObjectId,
   ref: "User"
 }

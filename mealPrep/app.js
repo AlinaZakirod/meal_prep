@@ -106,6 +106,7 @@ const index = require('./routes/index');
 app.use('/', index);
 app.use('/', require('./routes/user-routes'));
 app.use('/', require('./routes/plan-routes'));
+app.use('/', require('./routes/meal-routes'));
 
 
 module.exports = app;
