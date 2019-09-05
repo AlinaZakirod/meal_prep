@@ -1,6 +1,6 @@
-<h2>Create Your plan</h2>
+<h2>Edit {{thePlan.title}} plan</h2>
 
-<form action="/plans/create" method = "POST">
+<form action="/plans/{{thePlan._id}}/update" method = "POST">
     <label for='title'>Name you plan</label>
     <input type="text" name ='title'>
     <label for="length">Amount of Days</label>

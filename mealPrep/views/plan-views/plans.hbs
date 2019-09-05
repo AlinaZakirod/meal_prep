@@ -1,7 +1,11 @@
 <h1>Блядь</h1>
 
 {{#each plans}}
- <li>{{this.title}}</li>
+  <li><a href="/plans/{{this._id}}">{{this.title}}</a></li>
+  <a href="/plans/{{this._id}}/edit">Edit Plan</a> <br>
+ <form action="/plans/{{this._id}}/delete" method ="POST">
+ <button>Delete Plan</button>
+ </form>
 {{/each}}
-
+<br>
 <a href="/plans/new">Create new plan</a>
