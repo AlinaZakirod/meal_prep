@@ -2,9 +2,10 @@ const express = require("express");
 const router = express.Router();
 const User = require('../models/User');
 const bcrypt = require('bcryptjs');
-
 const passport = require("passport")
-const ensureLogin = require("connect-ensure-login");
+
+
+// const ensureLogin = require("connect-ensure-login");
 
 
 //signup route
@@ -16,30 +17,32 @@ router.post('/signup', (req, res, next) => {
   let username= req.body.theUsername;
   let pword = req.body.thePassword;
 
-
   // the new way with passport:
   if (!username || !pword) {
       req.flash('error', "please provide both username and password")
       res.redirect('/signup')
+      return;
   }
 
   // variables for bcrypt
-  let salt = bcrypt.genSaltSync(10);
+  const salt = bcrypt.genSaltSync(10);
   const hashedPassword = bcrypt.hashSync(pword, salt);
 
   User
-      .create({ username: username, password: hashedPassword })
+      .create({username: username, password: hashedPassword})
       .then(() => {
-          req.flash('sucess', "account successfully created")
-          res.redirect('/profile')
+          req.flash('success', "account successfully created")
+          res.redirect('/')
       })
-      .catch(err => console.log("error with furniture ", err))
+      .catch(err => {
+        next(err)
+      })
 })
 
 
 //login route
 router.get("/login", (req, res, next) => {
-  res.render("user-views/login", {'message': req.flash('error') });
+  res.render("user-views/login")
 });
 
 router.post("/login", passport.authenticate("local", {

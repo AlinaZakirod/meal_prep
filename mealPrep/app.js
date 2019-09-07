@@ -19,6 +19,7 @@ const flash = require("connect-flash")
 
 const User = require('./models/User');
 
+mongoose.Promise = Promise;
 mongoose
   .connect('mongodb://localhost/mealprep', {useNewUrlParser: true})
   .then(x => {
@@ -39,6 +40,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+
+
 // Express View engine setup
 app.use(require('node-sass-middleware')({
   src:  path.join(__dirname, 'public'),
@@ -46,6 +49,13 @@ app.use(require('node-sass-middleware')({
   sourceMap: true
 }));
  
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
+
+
 // express session configuration
 app.use(session({
   secret: "our-passport-local-strategy-app",
@@ -65,11 +75,12 @@ passport.deserializeUser((id, cb) => {
   });
 });
 
+
+//error messages:
 app.use(flash());
-passport.use(new LocalStrategy({
-  passReqToCallback: true
-   }, (req, username, password, next) => {
-  User.findOne({ username }, (err, user) =>  {
+passport.use(new LocalStrategy((username, password, next) => {
+  User
+  .findOne({ username }, (err, user) =>  {
     if (err) {
       return next(err);
     }
@@ -89,24 +100,24 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
-
-
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+  res.locals.errorMessage = req.flash('error')
+  res.locals.successMessage = req.flash('success')
+  next()
+})
 
 // default value for title local
 app.locals.title = 'Express - Generated with IronGenerator';
 
 
 // require routes
-const index = require('./routes/index');
-app.use('/', index);
 app.use('/', require('./routes/user-routes'));
 app.use('/', require('./routes/plan-routes'));
 app.use('/', require('./routes/meal-routes'));
 
+
+const index = require('./routes/index');
+app.use('/', index);
 
 module.exports = app;
