@@ -1,11 +1,39 @@
 <h2>Create Your plan</h2>
 
-<form action="/plans/create" method = "POST">
+<form action="/plans/create" method = "POST" id='newPlanForm'>
+    <p>Plan Details</p>
     <label for='title'>Name you plan</label>
     <input type="text" name ='title'>
     <label for="length">Amount of Days</label>
     <input type="text" name = "length">
     <label for="people">people</label>
     <input type="text" name= "people">
+    <br>
+    <p>Nutritional value</p>
+    <label for="kcal">Calories per meal</label>
+    <input type="number" name="kcal">
+    <label for="carbs">Carbs</label>
+    <input type="number" name="carbs">
+    <label for="fat">Fat</label>
+    <input type="number" name="fat">
+    <label for="protein">Protein</label>
+    <input type="number" name="protein">
+    <br>
+    <p>Food Details</p>
+    <label for="diet">Food plan you follow:</label>
+    <select name="diet" id="">
+      <option value="no-diet">No plan</option>
+      <option value="keto">Keto</option>
+      <option value="paleo">Paleo</option>
+      <option value="vegan">Vegan</option>
+    </select>
+    <label for="fav">Favourite food</label>
+    <input type="text" name='fav'>
+    <label for="allergy">Do you have a food allergy?</label>
+    <input type="text" name="allergy">
+    
+    <br>
     <button type="submit">Submit</button>
 </form>
+
+<div id='divForPlanResults'></div>

@@ -8,6 +8,18 @@ const passport = require("passport")
 // const ensureLogin = require("connect-ensure-login");
 
 
+
+router.get('/ing/:search',(req,res,next)=>{
+
+  client.search({ query: req.params.search })
+  .then((call)=>{
+    res.json(call)
+  }).catch((error)=>{
+    console.log(error)
+  })
+})
+
+
 //signup route
 router.get('/signup', (req, res, next) =>{
   res.render("user-views/signup")

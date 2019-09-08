@@ -17,6 +17,21 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const flash = require("connect-flash")
 
+
+//Edamam API
+const { RecipeSearchClient } = require('edamam-api');
+ 
+const client = new RecipeSearchClient({
+  appId: '522bfc01',
+  appKey: '15f84bd55ca991de46a8878ead9a9107'
+});
+ 
+// const results = await client.search({ query: 'Bread' });
+client.search({query: 'Bread'})
+  .then()
+  .catch()
+  //_________________________
+
 const User = require('./models/User');
 
 mongoose.Promise = Promise;
@@ -99,6 +114,9 @@ passport.use(new LocalStrategy((username, password, next) => {
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+
+// ________________________________________
 
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
