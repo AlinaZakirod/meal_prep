@@ -17,7 +17,8 @@ router.get('/ing/:search',(req,res,next)=>{
   client.search({ query: req.params.search })
   .then((ingr)=>{
     res.json(ingr)
-  }).catch((err)=>{
+  })
+  .catch((err)=>{
     console.log(err)
   })
 })

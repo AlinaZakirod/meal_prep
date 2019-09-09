@@ -1,9 +1,16 @@
 <h1>Add a meal</h1>
 <form action="/meals/create" method="POST">
-  <label for='title'>Name you meal</label>
-  <input type="text" name ='title'>
+  <label for="kcal">Calories per meal</label>
+  <input type="number" name ='kcal'>
+  <label for="carbs">Carbs</label>
+  <input type="number" name="carbs">
+  <label for="fat">Fat</label>
+  <input type="number" name="fat">
+  <label for="protein">Protein</label>
+  <input type="number" name="protein">
   <label for="ingridients">List of ingidients</label>
   <input type="text" name ="ingridients">
+
   <button type="submit">Submit</button>
 </form>
 

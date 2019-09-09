@@ -22,8 +22,8 @@ const flash = require("connect-flash")
 const { RecipeSearchClient } = require('edamam-api');
  
 const client = new RecipeSearchClient({
-  appId: '522bfc01',
-  appKey: '15f84bd55ca991de46a8878ead9a9107'
+  appId: 'f8e66ec4',
+  appKey: '9741c69dc99cb5c20165983a131f9890'
 });
  
 // const results = await client.search({ query: 'Bread' });
@@ -133,6 +133,7 @@ app.locals.title = 'Express - Generated with IronGenerator';
 app.use('/', require('./routes/user-routes'));
 app.use('/', require('./routes/plan-routes'));
 app.use('/', require('./routes/meal-routes'));
+app.use('/', require('./routes/plan-api-routes'));
 
 
 const index = require('./routes/index');
