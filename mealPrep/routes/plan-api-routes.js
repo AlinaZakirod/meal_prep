@@ -1,14 +1,18 @@
 const express = require('express');
 const router  = express.Router();
 const axios = require("axios");
-// const { RecipeSearchClient } = require('edamam-api');
+const { RecipeSearchClient } = require('edamam-api');
 
 // const client = new foodDatabaseClient({
-//   appId: 'f8e66ec4',
-//   appKey: '9741c69dc99cb5c20165983a131f9890'
+//   appId: '522bfc01',
+//   appKey: '15f84bd55ca991de46a8878ead9a9107'
 // });
 
-router.get('api/plan/new/:id', (req, res, next) =>{
+
+
+
+
+router.get('/api/plan/new/:id', (req, res, next) =>{
   // Meal.create()
   client.search({ query: req.params.search })
   .then((foundMeal) => {
@@ -18,5 +22,6 @@ router.get('api/plan/new/:id', (req, res, next) =>{
     console.log(err)
   })
 })
+
 
 module.exports = router;

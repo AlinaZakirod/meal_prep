@@ -22,58 +22,16 @@ router.get('/new/:idVariable', (req, res, next) => {
       next(err)
     })
 })
-// from api-plan:
-// router.get('api/plan/new/:id', (req, res, next) =>{
-//   // Meal.create()
-//   client.search({ query: req.params.search })
-//   .then((foundMeal) => {
-//     res.json(foundMeal)
-//   })
-//   .catch((err) => {
-//     console.log(err)
-//   })
-// })
 
-// router.get('/api/celebs/details/:id', (req, res, next)=>{
-//   let id = req.params.id;
-//   Celebrity.findById(id)
-//   .then((theCelebrity)=>{
-//       res.json(theCelebrity)
-//   })
-//   .catch((err)=>{
-//       next(err);
-//   })
-// })
-router.post('/plans/create', (req, res, next) => {
-  let kcal 
-  let carbs 
-  let fat
-  let protein
-
-  Meal 
-    .create(req.body) 
-    .then(foundMeal => {
-      res.json(foundMeal)
-    })
+// ______________________
+// new Post route:
+router.post('/api/plan/new/:id', (req, res, next) => {
+  console.log('jygfui')
+  client.search({ query: req.params.search })
+  .then(result => console.log(result.data))
     .catch(err => console.log('error', err))
 })
-// router.post('/api/celebs/edit/:id', (req, res, next)=>{
-//   let id = req.params.id;
-//   Celebrity.findByIdAndUpdate(id, {
-//       name: req.body.theName,
-//       occupation: req.body.theOccupation,
-//       catchphrase: req.body.theCatchphrase
-//   })
-//   .then((response)=>{
-//       res.json({msg: 'yay, good job'});
-//   })  
-//   .catch((err)=>{
-//       console.log(err);
-//   })
-
-// })
-
-//________________________
+// ______________________
 
 // before axios POST route:
 // router.post('/plans/create', (req, res, next) => {
