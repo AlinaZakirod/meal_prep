@@ -1,6 +1,6 @@
 <h2>Create Your plan</h2>
 
-<form action="/plans/create" method = "POST" id='newPlanForm'>
+<form id='newPlanForm'>
     <p>Plan Details</p>
     <label for='title'>Name you plan</label>
     <input type="text" name ='title'>
@@ -20,8 +20,9 @@
     <input type="number" name="protein">
     <br>
     <p>Food Details</p>
+
     <label for="diet">Food plan you follow:</label>
-    <select name="diet" id="">
+    <select name="diet" id="diet">
       <option value="no-diet">No plan</option>
       <option value="keto">Keto</option>
       <option value="paleo">Paleo</option>
@@ -37,3 +38,5 @@
 </form>
 
 <div id='divForPlanResults'></div>
+
+<script src="/javascripts/new-plan.js"></script>

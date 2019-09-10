@@ -5,10 +5,25 @@ const Meal = require('../models/Meal');
 
 
 router.get('/plans/new', (req, res, next) => {
-  Meal
-    .find()
-    .then(allMeals => res.render("plan-views/new-plan", {allMeals}))
-    .catch(err => console.log('error while creating new plan', err))
+
+let calories = req.body.kcal;
+let carbs = rerq.body.carbs;
+
+
+
+  axios.get('https://api.edamam.com/search?app_id=$f8e66ec4&app_key=$9741c69dc99cb5c20165983a131f9890')
+  .then((foundMeal) => {
+    res.json(foundMeal)
+  })
+  .catch((err) => {
+    console.log(err)
+  })
+ 
+
+  // Meal
+  //   .find()
+  //   .then(allMeals => res.render("plan-views/new-plan", {allMeals}))
+  //   .catch(err => console.log('error while creating new plan', err))
 })
 
 router.get('/new/:idVariable', (req, res, next) => {
