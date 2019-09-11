@@ -1,30 +1,52 @@
 const express = require("express");
 const router = express.Router();
+const axios = require('axios');
 const Plan = require('../models/Plan');
 const Meal = require('../models/Meal');
 
-
 router.get('/plans/new', (req, res, next) => {
+  
+  Meal
+    .find()
+    .then(allMeals => res.render("plan-views/new-plan", {allMeals}))
+    .catch(err => console.log('error while creating new plan', err))
+})
 
-let calories = req.body.kcal;
-let carbs = rerq.body.carbs;
+
+ 
+router.post('/plans/create', (req, res, next) => {
+  //we assign variables to out input values
+  let kcal = req.body.kcal;
+  let carbs = req.body.carbs;
+  let fat = req.body.fat;
+  let protein =req.body.protein;
+  let diet = req.body.diet;
+  let fav = req.body.fav;
+  let allergy = req.body.allergy;
+  //create Search Term to add to the URL, using the syntax of Edamam API
+  searchTerm = '';
+  searchTerm += '&calories='+ kcal
+  searchTerm += '&nutrients%5BCHOCDF%5D=' + carbs
+  searchTerm += '&nutrients%5BFAT%5D=' + fat
+  searchTerm += '&nutrients%5BPROCNT%5D=' + protein
+
+  // searchTerm += '&diet=' + diet
+  searchTerm += '&q=' + fav
+  searchTerm += "&excluded=" + allergy
 
 
-
-  axios.get('https://api.edamam.com/search?app_id=$f8e66ec4&app_key=$9741c69dc99cb5c20165983a131f9890')
-  .then((foundMeal) => {
-    res.json(foundMeal)
+  axios.get('https://api.edamam.com/search?app_id=$f8e66ec4&app_key=$9741c69dc99cb5c20165983a131f9890'+ searchTerm)
+  .then((result) => {
+    console.log(result.data)
+    res.json(result.data);
   })
+  // .then((foundMeal) => {
+  //   res.json(foundMeal)
+  // })
   .catch((err) => {
     console.log(err)
   })
- 
-
-  // Meal
-  //   .find()
-  //   .then(allMeals => res.render("plan-views/new-plan", {allMeals}))
-  //   .catch(err => console.log('error while creating new plan', err))
-})
+ })
 
 router.get('/new/:idVariable', (req, res, next) => {
   const theId =req.params.idVariable;

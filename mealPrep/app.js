@@ -126,7 +126,7 @@ app.use((req, res, next) => {
 })
 
 // default value for title local
-app.locals.title = 'Express - Generated with IronGenerator';
+app.locals.title = 'Welcome to Meal Plans!!! Bon A Petit!';
 
 
 // require routes
