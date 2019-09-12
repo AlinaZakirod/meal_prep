@@ -15,7 +15,9 @@ router.get('/plans/new', (req, res, next) => {
 
  
 router.post('/plans/create', (req, res, next) => {
+  
   //we assign variables to out input values
+  let newTitle = req.body.newTitle
   let kcal = req.body.kcal;
   let carbs = req.body.carbs;
   let fat = req.body.fat;
@@ -23,30 +25,49 @@ router.post('/plans/create', (req, res, next) => {
   let diet = req.body.diet;
   let fav = req.body.fav;
   let allergy = req.body.allergy;
-  //create Search Term to add to the URL, using the syntax of Edamam API
+
+  //  create Search Term to add to the URL, using the syntax of Edamam API
   searchTerm = '';
   searchTerm += '&calories='+ kcal
   searchTerm += '&nutrients%5BCHOCDF%5D=' + carbs
   searchTerm += '&nutrients%5BFAT%5D=' + fat
   searchTerm += '&nutrients%5BPROCNT%5D=' + protein
 
-  // searchTerm += '&diet=' + diet
   searchTerm += '&q=' + fav
   searchTerm += "&excluded=" + allergy
 
 
-  axios.get('https://api.edamam.com/search?app_id=$f8e66ec4&app_key=$9741c69dc99cb5c20165983a131f9890'+ searchTerm)
-  .then((result) => {
-    console.log(result.data)
-    res.json(result.data);
-  })
-  // .then((foundMeal) => {
-  //   res.json(foundMeal)
-  // })
-  .catch((err) => {
-    console.log(err)
-  })
- })
+  if(diet)
+  searchTerm += '&diet=' + diet
+
+  Plan 
+          .create({
+            title: newTitle
+          }) 
+          .then(newPlan => {
+
+            axios.get('https://api.edamam.com/search?app_id=$f8e66ec4&app_key=$9741c69dc99cb5c20165983a131f9890'+ searchTerm)
+            .then((result) => {
+              console.log(result.data)
+              res.json(result.data);
+              })
+             .catch((err) => {
+              console.log(err)
+            })
+
+          })
+          .catch(err => console.log('error', err))  
+  });
+
+
+  // router.post('/meals/create/edamam' , (req, res, next) => {
+  //   Meal
+  //     .create(req.body)
+  //     .then(newMeal => {
+  //       res.redirect('/meals')
+  //     })
+  //     .catch(err => console.log("error while creating a meal", err))
+  // }) 
 
 router.get('/new/:idVariable', (req, res, next) => {
   const theId =req.params.idVariable;
@@ -62,12 +83,12 @@ router.get('/new/:idVariable', (req, res, next) => {
 
 // ______________________
 // new Post route:
-router.post('/api/plan/new/:id', (req, res, next) => {
-  console.log('jygfui')
-  client.search({ query: req.params.search })
-  .then(result => console.log(result.data))
-    .catch(err => console.log('error', err))
-})
+// router.post('/api/plan/new/:id', (req, res, next) => {
+//   console.log('jygfui')
+//   client.search({ query: req.params.search })
+//   .then(result => console.log(result.data))
+//     .catch(err => console.log('error', err))
+// })
 // ______________________
 
 // before axios POST route:

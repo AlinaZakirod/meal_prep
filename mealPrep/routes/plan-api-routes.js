@@ -8,10 +8,6 @@ const { RecipeSearchClient } = require('edamam-api');
 //   appKey: '15f84bd55ca991de46a8878ead9a9107'
 // });
 
-
-
-
-
 router.get('/api/plan/new/:id', (req, res, next) =>{
   // Meal.create()
   client.search({ query: req.params.search })

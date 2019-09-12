@@ -11,6 +11,7 @@
 
     const formInputToSend = {
         //we get values from the form here
+        newTitle: document.querySelector('#newPlanForm input[name="title"]').value,
         kcal: document.querySelector('#newPlanForm input[name="kcal"]').value,
         carbs: document.querySelector('#newPlanForm input[name="carbs"]').value,
         fat: document.querySelector('#newPlanForm input[name="fat"]').value,
@@ -21,41 +22,45 @@
       };
    
 
- 
     axios.post('http://localhost:3000/plans/create', formInputToSend)
     .then(response => {
-      console.log('post successful and the response is: ', response );
+      console.log('post successful and the response is: ', response.data );
       // debugger;
-      $('#divForPlanResults').prepend(`<h2>New Plan Name: ${response.data.q}</h2>`)
-      $('#divForPlanResults').prepend(`<p>Calories: ${response.data.params.calories}</p>`)
-
+      $('#divForPlanResults').prepend(`<h4>${response.data.hits[0].recipe.label}</h4><img src='${response.data.hits[0].recipe.image}'<br><p>Calories: ${response.data.hits[0].recipe.calories}</p><form><button class="addMealFromApi">Add To The Plan</button></form>`)
+      $('#divForPlanResults').prepend(`<h4>${response.data.hits[1].recipe.label}</h4><img src='${response.data.hits[1].recipe.image}'<br><p>Calories: ${response.data.hits[1].recipe.calories}</p><form><button class="addMealFromApi">Add To The Plan</button></form>`)
+      $('#divForPlanResults').prepend(`<h4>${response.data.hits[2].recipe.label}</h4><img src='${response.data.hits[2].recipe.image}'<br><p>Calories: ${response.data.hits[1].recipe.calories}</p><form action="/plans/create" method="POST"><button class="addMealFromApi">Add To The Plan</button></form>`)
     })
     .catch(error => {
       console.log('Oh No! Error is: ', error);  
     })
+    
+        // function addMealFromApi() {
+        //   axios.post('http://localhost:3000/meals/create', {
+        //     title: title?,
+        //     kcal: kcal?
+        //   })
+        //   .then(result => {
+        //       console.log("Then I need to push it into       plan._menuObjects array and display success message ", result)
+        //   })
+        //   .catch(err => {
+        //     console.log('error while adding meal from API to db:' + err)
+        // })
+
+       const addButton = document.getElementsByClassName("addMealFromApi") 
       
-        //my local will send it to external API and will get response - meals, matching requested parameters--> I will apeend them here after the form?
-  
-
-// $('divForPlanResults').append(`<h3>New meal ${result}</h3>`)
-// https://api.edamam.com/search?app_id=$f8e66ec4&app_key=$9741c69dc99cb5c20165983a131f9890
-
-
-    //shifted inside of axios:
-    // let kcal = document.querySelector('#newPlanForm input[name="kcal"]').value
-    // console.log(kcal)
-    // let carbs = document.querySelector('#newPlanForm input[name="carbs"]').value
-    // console.log(carbs)
-    // let fat = document.querySelector('#newPlanForm input[name="fat"]').value
-    // console.log(fat)
-    // let protein = document.querySelector('#newPlanForm input[name="protein"]').value
-    // console.log(protein)  
-    // let diet = document.getElementById('diet').value
-    // // console.log('hello')
-    // // console.log(document.getElementById('diet'))
-    // console.log(diet)
-    // let fav = document.querySelector('#newPlanForm input[name="fav"]').value
-    // console.log(fav) 
-    // let allergy = document.querySelector('#newPlanForm input[name="allergy"]').value
-    // console.log(allergy) 
+       function put(e){
+        let print = e.currentTarget.previousSibling.innerHTML
+        console.log(print)
+      }
+      put(addButton)
   }
+
+
+
+
+
+
+
+
+
+ 
