@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
   <title>{{title}}</title>
    <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -26,19 +27,32 @@
   </div>
  {{/if}} 
 
-{{!-- <nav class="navbar navbar-expand-lg navbar fixed-top  navbar-light bg-light"><a class="navbar-brand" href="#Welcome"><img src="assets/images/logo.png" width="50" height="50" class="d-inline-block" alt="website template image"> Italian Restaurant</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item"><a class="nav-link active" href="#Welcome">Welcome</a></li>
-        <li class="nav-item"><a class="nav-link" href="#Restaurant">Restaurant</a></li>
-        <li class="nav-item"><a class="nav-link" href="#Menu">Menu</a></li>
-        <li class="nav-item"><a class="nav-link" href="#Reservation">Reservation</a></li>
-        <li class="nav-item"><a class="nav-link" href="#OurLocation">Our Location</a></li>
-        <li class="nav-item"><a href="https://www.free-css.com/free-css-templates" class="language" rel="it-IT"><img src="assets/images/italy.ico.jpg" class="flag" alt="website template image"></a> <a href="https://www.free-css.com/free-css-templates" class="language" rel="en-En"><img src="assets/images/english.ico.jpg" class="flag" alt="website template image"></a></li>
-      </ul>
+{{!-- bootstrap code --}}
+
+{{!-- <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container">
+ 
+      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+ 
+      <!-- Be sure to leave the brand out there if you want it shown -->
+      <a class="brand" href="#">Project name</a>
+ 
+      <!-- Everything you want hidden at 940px or less, place within here -->
+      <div class="nav-collapse collapse">
+        <!-- .nav, .navbar-search, .navbar-form, etc -->
+      </div>
+ 
     </div>
-  </nav> --}}
+  </div>
+</div> --}}
+
+
 
  <nav>
    {{#if currentUser}}

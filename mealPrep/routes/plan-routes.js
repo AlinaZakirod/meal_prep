@@ -5,7 +5,6 @@ const Plan = require('../models/Plan');
 const Meal = require('../models/Meal');
 
 router.get('/plans/new', (req, res, next) => {
-  
   Meal
     .find()
     .then(allMeals => res.render("plan-views/new-plan", {allMeals}))
@@ -125,6 +124,7 @@ router.get('/plans/:Id/edit', (req, res, next) => {
     .catch(err => console.log("error while editing the plan:", err))
 })
 
+
 router.post('/plans/:Id/update', (req, res, next) => {
   Plan
     .findByIdAndUpdate(req.params.Id, req.body)
@@ -134,6 +134,16 @@ router.post('/plans/:Id/update', (req, res, next) => {
       console.log("error while updating the movie", err)
     })
 })
+
+// router.post('/plans/:Id/addMeal', (req, res, next) => {
+//   Plan
+//     .findByIdAndUpdate(req.params.Id, req.body)
+//     .then(res.redirect(`/plans/${req.params.Id}`))
+//     .catch(err => {
+//       console.log("error while updating the movie", err)
+//     })
+// })
+
 
 
 
