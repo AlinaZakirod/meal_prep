@@ -19,7 +19,7 @@
       };
    
 
-    axios.post('http://localhost:3000/plans/create', formInputToSend)
+    axios.post('/plans/create', formInputToSend)
     .then(response => {
       console.log('post successful and the response is: ', response.data );
       // debugger;
@@ -34,24 +34,32 @@
 
       $('body').on('click', '.addMealFromApi', function(event){
         event.preventDefault()
-        console.log("nah");
+    
         const target = $(event.target)
         target.text( "Added" );
         const parent = target.parent().parent().css( "background-color", "red" );
         target.parent().prev().css( "background-color", "blue" );
 
         const mealTitle = target.parent().prev().prev().prev().text();
-        console.log(mealTitle)
     
         const mealKcal = target.parent().prev().text();
-        console.log(mealKcal)
 
         const newMealFromApi = new Object()
         newMealFromApi.title = mealTitle;
-        mealTitle.
+        newMealFromApi.calories = mealKcal
+        console.log(newMealFromApi)
 
-        
-        
+        axios.post('/meals/create', {
+          title : mealTitle,
+          kcal: mealKcal,
+          })
+          .then(response => {
+            console.log("You just created a new meal rom Api: ", response.data)
+          })
+          .catch(err => {
+            console.log("Error while adding selected meal to the DB ", err)
+          })
+
       })
       
     })

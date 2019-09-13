@@ -3,6 +3,7 @@ const Schema   = mongoose.Schema;
 
 const mealSchema = new Schema({
   title : String,
+  kcal: Schema.Types.Mixed,
   ingridients: String,
   author: {
   type: Schema.Types.ObjectId,
