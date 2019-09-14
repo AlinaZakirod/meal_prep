@@ -1,11 +1,11 @@
 <h2>Edit {{thePlan.title}} plan</h2>
 
 <form action="/plans/{{thePlan._id}}/update" method = "POST" class='form'>
-    <label for='title'>Name you plan</label>
-    <input type="text" name ='title'>
-    <label for="length">Amount of Days</label>
-    <input type="text" name = "length">
-    <label for="people">people</label>
-    <input type="text" name= "people">
+    <label for='title' >Name you plan</label>
+    <input type="text" placeholder="{{thePlan.title}}" name ='title'>
+    <label for="length" >Amount of Days</label>
+    <input type="text" placeholder="{{thePlan.length}}" name = "length">
+    <label for="people" >people</label>
+    <input type="text" placeholder="{{thePlan.people}}" name= "people">
     <button type="submit">Submit</button>
 </form>
