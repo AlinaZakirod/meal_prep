@@ -1,9 +1,9 @@
 <h2>Login</h2>
-<form id = 'form' action="/login" method="POST">
+<form id = 'form' action="/login" method="POST" claa='form'>
 
   <div>
     <label for="username">Username</label>
-    <input type="text" name="username">
+    <input type="text" name="username" class="linearInput">
   </div>
 
   <div>
@@ -12,9 +12,9 @@
 </div>
 
 {{#if message}}
-  <div class='error-message'>{{ message }}</div>
+  <div class='alert alert-error'>{{ message }}</div>
 {{/if}}  
-<div>
-  <input type="submit" value="log In">
+<div class='button'>
+  <input type="submit" value="Log In" >
 </div>
 </form>

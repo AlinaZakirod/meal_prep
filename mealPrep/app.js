@@ -126,7 +126,7 @@ app.use((req, res, next) => {
 })
 
 // default value for title local
-app.locals.title = 'Welcome to Meal Plans!!! Bon A Petit!';
+app.locals.title = "Welcome to Meal Plans! Let's get you some food";
 
 
 // require routes

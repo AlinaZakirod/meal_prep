@@ -11,7 +11,12 @@
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <link rel="stylesheet" href="/stylesheets/styles.css" />
+
+  <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+  <link rel="stylesheet" href="/stylesheets/bootstrap-responsive.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="/stylesheets/styles.css"/>
 </head>
 <body>
 
@@ -29,48 +34,96 @@
 
 {{!-- bootstrap code --}}
 
-{{!-- <div class="navbar">
+<nav>
+
+  <div class="navbar" class='navbar-static-top'>
   <div class="navbar-inner">
-    <div class="container">
- 
-      <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
-      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
- 
-      <!-- Be sure to leave the brand out there if you want it shown -->
-      <a class="brand" href="#">Project name</a>
- 
-      <!-- Everything you want hidden at 940px or less, place within here -->
-      <div class="nav-collapse collapse">
-        <!-- .nav, .navbar-search, .navbar-form, etc -->
-      </div>
- 
-    </div>
-  </div>
-</div> --}}
+  <div class="container">
 
+    <div class="navbar">
+    <div class="navbar-inner">
+     <a class="brand" href="/">Meal Prep</a>
+     
+     <ul class="nav">  
 
-
- <nav>
-   {{#if currentUser}}
-     <h3>hello, {{currentUser.username}}</h3>
-     <form action="/logout" method="POST">
-        <button>Logout</button>
-     </form>
-   {{else}}  
-      <a href="/login">Login</a>
-      <a href="/signup">Signup</a>
-   {{/if}}   
-
-   <a href="/meals">pick your meals</a>
+   {{!-- <a href="/meals">pick your meals</a>
    <a href="/meals/new">Add a meal</a>
 
    <a href="/plans">get a plan</a>
-   <a href="/plans/new">Build a new plan</a>
- </nav>
+   <a href="/plans/new">Build a new plan</a> --}}
+
+   
+      
+      <li class="pull-left"><a href="/meals">Pick your meals</a></li>
+      <li class="divider-vertical"></li>
+      <li class="pull-left"><a href="/meals/new">Build a new plan</a></li>
+      <li class="divider-vertical"></li>
+      <li class="pull-left"><a href="/plans">Get a plan</a></li>
+      <li class="divider-vertical"></li>
+      <li class="pull-left"><a href="/plans/new">Build a new plan</a></li>
+
+   {{#if currentUser}}
+     
+     <form action="/logout" method="POST" class="pull-right">
+        <button>Logout</button>
+     </form>
+   {{else}}  
+      {{!-- <a href="/login">Login</a> --}}
+      <li class="pull-right" class="clearfix"><a href="/login">Login</a></li>
+      <li class="pull-right" class="clearfix"><a href="/signup">Signup</a></li>
+      {{!-- <a href="/signup">Signup</a> --}}
+
+      {{!-----------------------------------------------------------}}
+
+      {{!-- <div class="modal hide fade">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h3>Modal header</h3>
+        </div>
+        <div class="modal-body">
+          <p>One fine body…</p>
+        </div>
+        <div class="modal-footer">
+          <a href="#" class="btn">Close</a>
+          <a href="#" class="btn btn-primary">Save changes</a>
+        </div>
+      </div> --}}
+
+
+{{!-----------------------------------------------------------}}
+      {{!-- <a href="#myModal" role="button" class="btn" data-toggle="modal">Login</a>
+
+      <!-- Modal -->
+      <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3 id="myModalLabel">Modal header</h3>
+      </div>
+      <div class="modal-body">
+      <p>One fine body…</p>
+      </div>
+      <div class="modal-footer">
+      <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+      <button class="btn btn-primary">Save changes</button>
+      </div>
+      </div> --}}
+
+
+      
+   {{/if}} 
+      
+    </ul>
+  </div>
+</div>
+
+</nav>
+ 
+{{#if currentUser}}
+  <h3 class="brand">hi there, {{currentUser.username}}</h3>
+{{/if}}
+
+
+ 
 
   {{{body}}}
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
