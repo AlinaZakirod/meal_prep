@@ -7,6 +7,12 @@ body {
 }
 
 
+h2 {
+  margin: 1.5em 0;
+  font-weight: 100;
+  font-size: 40px;
+}
+
 .pull-right {
   float: right;
 }
@@ -17,15 +23,16 @@ body {
 
 
 .form {
-  padding: 6em 0;
+  margin-top: 2em;
+  padding: 2.2em 2.2em;
   text-align: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  align-content: center;
+  width: 35%;
+  margin: 0 auto; 
 }
 
-h2 {
-    margin: 0 0 .85em 0;
-    font-weight: 100;
-    font-size: 30px;
-}
+
 
 .submit {
   width: 100%;
@@ -33,34 +40,58 @@ h2 {
   margin: auto;
 }
 
-/* input  */
-  .linearInput{
+
+.box {
+  list-style:none;
+  margin-top: 40px
+}
+
+label{
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7)
+}
+
+input, input[type=password], input[type=number], input[type=text]{
   width: 100%;
   background: transparent;
   border: 0;
   border-bottom: 1px solid;
-  padding: 1em 0 .8em;
+  padding: .8em 0 .8em;
   text-align: center;
-  font-size: 18px;
+  font-size: 20px;
   font-family: inherit;
   font-weight: 300;
-  line-height: 1.5;
+  line-height: 1;
   color: inherit;
   outline: none;
+  margin-bottom: 2em;
 }
-          /* &::placeholder { 
-              color: hsla(0, 0%, 100%, 0.5);
-          } */
-      
 
-button {    
+button, input[type=submit] {    
   all: unset;
-  margin-top: 2.4em;
+  /* margin-top: 2.4em; */
   background: #2bb24c;
   border: 2px solid #2bb24c;
-  padding: 1em 4em;
+  padding: 1em 2em;
   border-radius: 50px;
   display: inline-block;
+  font-size: 20px;
+  font-weight: 700;
+  position: relative;
+  transition: all 300ms ease;
+ 
+}
+
+
+.button{    
+  all: unset;
+  /* margin-top: 2.4em; */
+  background: #2bb24c;
+  border: 2px solid #2bb24c;
+  padding: 1em 2em;
+  border-radius: 50px;
+  display: inline-block;
+  font-size: 20px;
   font-weight: 700;
   position: relative;
   transition: all 300ms ease;
@@ -68,7 +99,41 @@ button {
 
 
 
+.secondaryButton{    
+  all: unset;
+  /* margin-top: 2.4em; */
+  background: transparent;
+  border: 2px solid #ffffff;
+  padding: 0.8em 2em;
+  border-radius: 50px;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 700;
+  position: relative;
+  transition: all 300ms ease;
+  margin-bottom: 20px;
+}
 
+a:hover { 
+  color: #2bb24c;
+  text-decoration: none;
+  list-style:none;
+}
+
+ul{
+  list-style:none;
+}
+li > a{
+  text-decoration: none;
+  color:white;
+  font-size:18px; 
+}
+
+.foodTitle{
+  font-size:24px;
+  font-weight: 700;
+  margin-bottom: 2em;
+}
 
 /* 
 #form {

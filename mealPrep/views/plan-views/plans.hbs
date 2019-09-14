@@ -1,12 +1,13 @@
 <h1>List of Plans</h1>
-
-{{#each plans}}
-  <li><a href="/plans/{{this._id}}">{{this.title}}</a></li>
+<div class ="box">
+{{#each plans class='box'}}
+  <li><a href="/plans/{{this._id}}" class="foodTitle">{{this.title}}</a></li>
   <p>{{this.length}}</p>
-  <a href="/plans/{{this._id}}/edit">Edit Plan</a><br>
- <form action="/plans/{{this._id}}/delete" method ="POST">
- <button>Delete Plan</button>
+  <a href="/plans/{{this._id}}/edit" class ="secondaryButton">Edit Plan</a><br>
+ <form action="/plans/{{this._id}}/delete" method ="POST" >
+ <button class ="secondaryButton">Delete Plan</button>
  </form>
 {{/each}}
-<br>
-<a href="/plans/new">Create new plan</a>
+</div>
+
+<a href="/plans/new" class ='button'>Create new plan</a>

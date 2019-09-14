@@ -1,21 +1,21 @@
 <h1>Add a meal</h1>
-<form action="/meals/create" method="POST">
+<form action="/meals/create" method="POST" class='form'>
   <label for="title">Title</label>
   <input type="text" name='title'>
   <label for="kcal">Calories per meal</label>
   <input name ='kcal'>
   <label for="carbs">Carbs</label>
-  <input type="number" name="carbs">
+  <input name="carbs">
   <label for="fat">Fat</label>
-  <input type="number" name="fat">
+  <input name="fat" >
   <label for="protein">Protein</label>
-  <input type="number" name="protein">
+  <input name="protein">
   <label for="ingridients">List of ingidients</label>
   <input type="text" name ="ingridients">
 
   <button type="submit">Submit</button>
 </form>
 
-<h1>Or Look up a meal:</h1>
-<form action="" method="POST"></form>
+{{!-- <h1>Or Look up a meal:</h1>
+<form action="" method="POST"></form> --}}
 

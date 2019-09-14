@@ -129,6 +129,7 @@ app.use((req, res, next) => {
 app.locals.title = "Welcome to Meal Plans! Let's get you some food";
 
 
+
 // require routes
 app.use('/', require('./routes/user-routes'));
 app.use('/', require('./routes/plan-routes'));

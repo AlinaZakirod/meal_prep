@@ -1,11 +1,12 @@
 <h1>Meals:</h1>
-
+<div class ="box">
 {{#each meals}}
-  <li><a href="/meals/{{this._id}}">{{this.title}}</a></li>
-  <a href="/meals/{{this._id}}/edit">Edit Meal</a> <br>
+  <li><a href="/meals/{{this._id}}" class="foodTitle">{{this.title}}</a></li>
+  <a href="/meals/{{this._id}}/edit" class ="secondaryButton">Edit Meal</a> <br>
  <form action="/meals/{{this._id}}/delete" method ="POST">
- <button>Delete Meal</button>
+ <button class ="secondaryButton">Delete Meal</button>
  </form>
 {{/each}}
-<br>
-<a href="/meals/new">Create new Meal</a>
+</div>
+
+<a href="/meals/new" class ="button">Create new Meal</a>
