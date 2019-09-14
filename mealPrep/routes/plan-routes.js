@@ -48,7 +48,10 @@ router.post('/plans/create', (req, res, next) => {
             axios.get('https://api.edamam.com/search?app_id=$f8e66ec4&app_key=$9741c69dc99cb5c20165983a131f9890'+ searchTerm)
             .then((result) => {
               console.log(result.data)
-              res.json(result.data);
+              res.json({
+                recipe: result.data,
+                plan: newPlan
+              });
               })
              .catch((err) => {
               console.log(err)
@@ -114,6 +117,7 @@ router.get('/plans', (req, res, next) => {
 
 //to edit the plan (edit form):
 router.get('/plans/:Id/edit', (req, res, next) => {
+  
   Plan
     .findById(req.params.Id)
     .then(thePlan => {
@@ -126,6 +130,7 @@ router.get('/plans/:Id/edit', (req, res, next) => {
 
 
 router.post('/plans/:Id/update', (req, res, next) => {
+  
   Plan
     .findByIdAndUpdate(req.params.Id, req.body)
     .then(res.redirect(`/plans/${req.params.Id}`))
@@ -135,14 +140,36 @@ router.post('/plans/:Id/update', (req, res, next) => {
     })
 })
 
-// router.post('/plans/:Id/addMeal', (req, res, next) => {
-//   Plan
-//     .findByIdAndUpdate(req.params.Id, req.body)
-//     .then(res.redirect(`/plans/${req.params.Id}`))
-//     .catch(err => {
-//       console.log("error while updating the movie", err)
-//     })
-// })
+
+
+
+
+
+router.post('/plans/:id/addMeal', (req, res, next) => {
+
+  Meal
+  .create(req.body)
+  .then(newMeal => {
+
+    Plan
+    .findByIdAndUpdate(req.params.id,{
+      $push: {_menuObjects: newMeal._id }
+    })
+    .then(res => {
+      res.json(res)
+      console.log("")
+    })
+    .catch(err => {
+      console.log("error while adding the meal to the plan", err)
+    })
+})
+.catch(err => console.log("error while creating a meal", err))
+
+})
+
+
+
+
 
 
 
