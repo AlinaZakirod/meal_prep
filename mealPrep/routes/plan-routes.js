@@ -17,6 +17,8 @@ router.post('/plans/create', (req, res, next) => {
   
   //we assign variables to out input values
   let newTitle = req.body.newTitle
+  let newLength = req.body.newLength
+  let newPeople = req.body.newPeople
   let kcal = req.body.kcal;
   let carbs = req.body.carbs;
   let fat = req.body.fat;
@@ -40,25 +42,27 @@ router.post('/plans/create', (req, res, next) => {
   searchTerm += '&diet=' + diet
 
   Plan 
-          .create({
-            title: newTitle
-          }) 
-          .then(newPlan => {
+      .create({
+        title: newTitle,
+        length: newLength,
+        people: newPeople
+      }) 
+      .then(newPlan => {
 
-            axios.get('https://api.edamam.com/search?app_id=$f8e66ec4&app_key=$9741c69dc99cb5c20165983a131f9890'+ searchTerm)
-            .then((result) => {
-              console.log(result.data)
-              res.json({
-                recipe: result.data,
-                plan: newPlan
-              });
-              })
-             .catch((err) => {
-              console.log(err)
-            })
-
+        axios.get('https://api.edamam.com/search?app_id=$f8e66ec4&app_key=$9741c69dc99cb5c20165983a131f9890'+ searchTerm)
+          .then((result) => {
+            console.log(result.data)
+            res.json({
+              recipe: result.data,
+              plan: newPlan
+            });
           })
-          .catch(err => console.log('error', err))  
+          .catch((err) => {
+            console.log(err)
+          })
+
+        })
+        .catch(err => console.log('error', err))  
   });
 
 

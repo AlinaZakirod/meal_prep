@@ -13,6 +13,8 @@
     const formInputToSend = {
         //we get values from the form here
         newTitle: document.querySelector('#newPlanForm input[name="title"]').value,
+        newLength: document.querySelector('#newPlanForm input[name="length"]').value,
+        newPeople: document.querySelector('#newPlanForm input[name="people"]').value,
         kcal: document.querySelector('#newPlanForm input[name="kcal"]').value,
         carbs: document.querySelector('#newPlanForm input[name="carbs"]').value,
         fat: document.querySelector('#newPlanForm input[name="fat"]').value,
